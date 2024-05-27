@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_basket_baskets",
+  "info": {
+    "displayName": "Basket",
+    "icon": "priceTag"
+  },
+  "options": {},
+  "attributes": {
+    "bookId": {
+      "type": "string",
+      "required": false
+    },
+    "bookNumber": {
+      "type": "integer"
+    }
+  }
+}

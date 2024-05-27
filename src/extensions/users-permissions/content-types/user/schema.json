@@ -67,14 +67,37 @@
     },
     "name": {
       "type": "string",
-      "required": true,
+      "required": false,
       "minLength": 2
     },
     "surname": {
       "type": "string",
-      "required": true,
+      "required": false,
       "unique": false,
       "minLength": 2
+    },
+    "avatar": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "favorites": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ids-books.favorites"
+    },
+    "basket": {
+      "type": "component",
+      "repeatable": true,
+      "component": "basket.basket"
+    },
+    "orders": {
+      "type": "component",
+      "repeatable": true,
+      "component": "orders.orders-data"
     }
   }
 }

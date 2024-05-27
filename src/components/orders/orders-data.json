@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_orders_orders_data",
+  "info": {
+    "displayName": "ordersData",
+    "icon": "shoppingCart",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "totalPrice": {
+      "type": "decimal"
+    },
+    "bookData": {
+      "type": "component",
+      "repeatable": true,
+      "component": "basket.basket"
+    }
+  }
+}

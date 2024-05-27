@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_favorite_books_favorites",
+  "info": {
+    "displayName": "BookIds",
+    "icon": "heart",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "bookId": {
+      "type": "string",
+      "unique": false,
+      "default": "[]"
+    }
+  }
+}
