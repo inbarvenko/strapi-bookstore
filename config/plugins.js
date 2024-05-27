@@ -1,9 +1,9 @@
-module.exports = ({env}) => ({
+module.exports = () => ({
     email: {
         config: {
           provider: 'sendgrid',
           providerOptions: {
-            apiKey: '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',
+            apiKey: process.env.SENDGRID_API_KEY,
           },
           settings: {
             defaultFrom: 'ibarvenko@sfedu.ru',
