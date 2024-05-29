@@ -458,6 +458,25 @@ export interface ApiBookBook extends Schema.CollectionType {
       Attribute.SetMinMaxLength<{
         minLength: 4;
       }>;
+    user_preferences: Attribute.Relation<
+      'api::book.book',
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
+    number_of_orders: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<0>;
+    number_of_comments: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<0>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -894,6 +913,15 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     favorites: Attribute.Component<'ids-books.favorites', true>;
     basket: Attribute.Component<'basket.basket', true>;
     orders: Attribute.Component<'orders.orders-data', true>;
+    preferences: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToMany',
+      'api::book.book'
+    >;
+    genre_preferences: Attribute.Component<
+      'preference-genres.preference-genres',
+      true
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

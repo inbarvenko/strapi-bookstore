@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_preference_genres_preference_genres",
+  "info": {
+    "displayName": "preferenceGenres"
+  },
+  "options": {},
+  "attributes": {
+    "genres": {
+      "type": "enumeration",
+      "enum": [
+        "Fantasy",
+        "Horror",
+        "Romance",
+        "Science Fiction",
+        "Thriller",
+        "Biography",
+        "Fiction",
+        "Non-fiction",
+        "Business & Finance",
+        "Travel"
+      ]
+    }
+  }
+}

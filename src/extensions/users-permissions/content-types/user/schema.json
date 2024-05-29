@@ -98,6 +98,17 @@
       "type": "component",
       "repeatable": true,
       "component": "orders.orders-data"
+    },
+    "preferences": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::book.book",
+      "inversedBy": "user_preferences"
+    },
+    "genre_preferences": {
+      "type": "component",
+      "repeatable": true,
+      "component": "preference-genres.preference-genres"
     }
   }
 }

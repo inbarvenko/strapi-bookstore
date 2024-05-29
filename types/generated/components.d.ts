@@ -47,6 +47,29 @@ export interface OrdersOrders extends Schema.Component {
   attributes: {};
 }
 
+export interface PreferenceGenresPreferenceGenres extends Schema.Component {
+  collectionName: 'components_preference_genres_preference_genres';
+  info: {
+    displayName: 'preferenceGenres';
+  };
+  attributes: {
+    genres: Attribute.Enumeration<
+      [
+        'Fantasy',
+        'Horror',
+        'Romance',
+        'Science Fiction',
+        'Thriller',
+        'Biography',
+        'Fiction',
+        'Non-fiction',
+        'Business & Finance',
+        'Travel'
+      ]
+    >;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -54,6 +77,7 @@ declare module '@strapi/types' {
       'ids-books.favorites': IdsBooksFavorites;
       'orders.orders-data': OrdersOrdersData;
       'orders.orders': OrdersOrders;
+      'preference-genres.preference-genres': PreferenceGenresPreferenceGenres;
     }
   }
 }
