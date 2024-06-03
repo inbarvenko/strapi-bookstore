@@ -86,16 +86,6 @@
       "max": 5,
       "min": 0
     },
-    "bookId": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "uid",
-      "targetField": "title",
-      "required": true
-    },
     "genre": {
       "pluginOptions": {
         "i18n": {
@@ -129,6 +119,16 @@
       },
       "type": "integer",
       "default": 0
+    },
+    "bookId": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "unique": false,
+      "required": true
     }
   }
 }

@@ -362,137 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiBookBook extends Schema.CollectionType {
-  collectionName: 'books';
-  info: {
-    singularName: 'book';
-    pluralName: 'books';
-    displayName: 'Book';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.SetMinMaxLength<{
-        minLength: 1;
-      }>;
-    description: Attribute.Text &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.SetMinMaxLength<{
-        minLength: 2;
-      }>;
-    author: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.SetMinMaxLength<{
-        minLength: 2;
-      }>;
-    isPaperAvaliable: Attribute.Boolean &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    price: Attribute.Decimal &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    image: Attribute.Media &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    rate: Attribute.Decimal &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }> &
-      Attribute.SetMinMax<
-        {
-          min: 0;
-          max: 5;
-        },
-        number
-      >;
-    bookId: Attribute.UID<'api::book.book', 'title'> &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    genre: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.SetMinMaxLength<{
-        minLength: 4;
-      }>;
-    user_preferences: Attribute.Relation<
-      'api::book.book',
-      'manyToMany',
-      'plugin::users-permissions.user'
-    >;
-    number_of_orders: Attribute.Integer &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }> &
-      Attribute.DefaultTo<0>;
-    number_of_comments: Attribute.Integer &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.DefaultTo<0>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::book.book', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::book.book', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::book.book',
-      'oneToMany',
-      'api::book.book'
-    >;
-    locale: Attribute.String;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -939,6 +808,555 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAuthTranslateAuthTranslate extends Schema.SingleType {
+  collectionName: 'auth_translations';
+  info: {
+    singularName: 'auth-translate';
+    pluralName: 'auth-translations';
+    displayName: 'AuthTranslations';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    login: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    signup: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    password: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    email: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    enter_email: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    enter_password: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    username: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    enter_username: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    repeat_password: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::auth-translate.auth-translate',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::auth-translate.auth-translate',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::auth-translate.auth-translate',
+      'oneToMany',
+      'api::auth-translate.auth-translate'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiAuthorizedTranslateAuthorizedTranslate
+  extends Schema.SingleType {
+  collectionName: 'authorized_translations';
+  info: {
+    singularName: 'authorized-translate';
+    pluralName: 'authorized-translations';
+    displayName: 'AuthorizedTranslations';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    empty_basket_title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    empty_basket_descrip: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    empty_favorites_title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    empty_favorites_descrip: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    go_to_catalog: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    personal_information: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    password: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    orders: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    avatar_upload: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    change_info: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    your_email: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    your_first_name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    your_last_name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    your_password: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    change_password: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    password_replay: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    confirm: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    old_password: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    new_password: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    order_number: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    book: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    book_number: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    price: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    your_favorites: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    your_basket: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    total_price: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    checkout: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::authorized-translate.authorized-translate',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::authorized-translate.authorized-translate',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::authorized-translate.authorized-translate',
+      'oneToMany',
+      'api::authorized-translate.authorized-translate'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiBookBook extends Schema.CollectionType {
+  collectionName: 'books';
+  info: {
+    singularName: 'book';
+    pluralName: 'books';
+    displayName: 'Book';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.SetMinMaxLength<{
+        minLength: 2;
+      }>;
+    author: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.SetMinMaxLength<{
+        minLength: 2;
+      }>;
+    isPaperAvaliable: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    price: Attribute.Decimal &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    rate: Attribute.Decimal &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+          max: 5;
+        },
+        number
+      >;
+    genre: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.SetMinMaxLength<{
+        minLength: 4;
+      }>;
+    user_preferences: Attribute.Relation<
+      'api::book.book',
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
+    number_of_orders: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Attribute.DefaultTo<0>;
+    number_of_comments: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<0>;
+    bookId: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::book.book', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::book.book', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::book.book',
+      'oneToMany',
+      'api::book.book'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiCommonTranslateCommonTranslate extends Schema.SingleType {
+  collectionName: 'common_translations';
+  info: {
+    singularName: 'common-translate';
+    pluralName: 'common-translations';
+    displayName: 'CommonTranslations';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    banner_title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    banner_button: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    banner_descrip: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    authorize_banner_title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    authorize_banner_descrip: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    authorize_banner_button: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    rate: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    catalog: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    recommendations: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    search: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    currency: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    skip: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::common-translate.common-translate',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::common-translate.common-translate',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::common-translate.common-translate',
+      'oneToMany',
+      'api::common-translate.common-translate'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -949,7 +1367,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::book.book': ApiBookBook;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -958,6 +1375,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::auth-translate.auth-translate': ApiAuthTranslateAuthTranslate;
+      'api::authorized-translate.authorized-translate': ApiAuthorizedTranslateAuthorizedTranslate;
+      'api::book.book': ApiBookBook;
+      'api::common-translate.common-translate': ApiCommonTranslateCommonTranslate;
     }
   }
 }
