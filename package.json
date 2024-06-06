@@ -23,6 +23,7 @@
     "react-router-dom": "5.3.4",
     "sendmail": "^1.6.1",
     "strapi": "3.6.11",
+    "stripe": "^15.9.0",
     "styled-components": "5.3.3"
   },
   "author": {

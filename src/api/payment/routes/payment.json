@@ -1,0 +1,9 @@
+{
+    "routes": [
+        {
+            "method": "POST",
+            "path": "/payment-sheet/:amount/:currency",
+            "handler": "payment.postPayment"
+        }
+    ]
+}
